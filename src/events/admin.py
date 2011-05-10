@@ -3,6 +3,9 @@ from django.contrib import admin
 from events.models import Event
 
 class EventAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('title', 'slug', 'start_date', 'end_date', 'location',
+                    'created', 'is_featured')
+    date_hierarcy = 'start_date'
+    list_filter = ('start_date',)
 
 admin.site.register(Event, EventAdmin)
